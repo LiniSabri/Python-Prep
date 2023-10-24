@@ -12,7 +12,17 @@ def Factorial(numero):
         Factorial(-2) debe retornar nulo
     '''
     #Tu código aca:
-    return 'Funcion incompleta'
+    if type(numero) != int:
+        return None
+    if numero <=1:
+        return None
+    
+    #esta parte no la entiendo:
+    factorial = 1
+    while (numero > 1):
+        factorial = factorial * numero      #(factorial*=numero)
+        numero = numero - 1                 #(numero-=1)
+    return factorial
 
 def EsPrimo(valor):
     '''
@@ -26,7 +36,23 @@ def EsPrimo(valor):
         EsPrimo(8) debe retornar False
     '''
     #Tu código aca:
-    return 'Funcion incompleta'
+    
+    #El chequeo del tipo de dato debe realizarse al principio de la función.
+    if type(valor) != int:
+        return None
+    # Si el valor es menor o igual a 1, no es primo
+    if valor <= 1:
+        return False
+
+    # Comprobar divisibilidad desde 2 hasta la raíz cuadrada del número
+    for i in range(2, int(valor ** 0.5) + 1):
+        if valor % i == 0:
+            return False
+        
+    return True
+    
+
+    
     
 def ClaseAnimal(especie, color):
     '''
@@ -47,4 +73,23 @@ def ClaseAnimal(especie, color):
         a.CumpliAnios() -> debe devolver 3
     '''
     #Tu código aca:
-    return 'Funcion incompleta'
+    class Animal:
+        def __init__(self, especie, color): #la edad no la coloco en el init. 
+            #ahora se inicializa en cero directamente dentro del método __init__, sin importar si se pasa o no 
+            # un valor de edad al crear una nueva instancia de la clase Animal. 
+            # De esta manera, cada vez que cree una nueva instancia de Animal, la edad se establecerá 
+            # automáticamente en cero.
+            self.edad = 0
+            self.especie = especie
+            self.color = color
+        
+        #no es necesaria esta instancia:
+        # animalito1 = Animal (8,"perrito", "amarillo")
+
+        def CumplirAños (self):
+            self.edad = self.edad + 1
+            return self.edad
+
+    return Animal(especie,color)
+
+
